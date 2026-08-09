@@ -1,0 +1,20 @@
+# Archivos de NetBeans
+nbproject/private/
+build/
+dist/
+nbbuild/
+nbdist/
+.nb-gradle/
+pruebalwjgl/
+# Archivos de clase y compilación
+*.class
+*.jar
+*.war
+*.ear
+
+# Archivos de configuración del IDE
+.settings/
+.classpath
+.project
+*.log
+/pruebaLWJGL/nbproject/private/
