@@ -14,28 +14,25 @@ public class ConfiguracionSpriteSheet {
     ) {
 
         RecorteSprite base;
-        RecorteSprite resultado;
-        Imprimir.mostrarEnConsolaln(imagenActual);
-        
+        RecorteSprite resultado;        
         switch (direccion) {
-            case ARRIBA:
+            case ARRIBA -> {
                 base = textura.extraertextura(columnaImagen+imagenActual, filaImagen+0, anchoSprite, altoSprite);
                 resultado = base;
-                break;
-            case ABAJO:
+            }
+            case ABAJO -> {
                 base = textura.extraertextura(columnaImagen+imagenActual, filaImagen+0, anchoSprite, altoSprite);
                 resultado = new RecorteSprite(base.getuInicio(), base.getuFin(), base.getvFin(), base.getvInicio());
-                break;
-            case DERECHA:
+            }
+            case DERECHA -> {
                 base = textura.extraertextura(columnaImagen+imagenActual, filaImagen+2, anchoSprite, altoSprite);
                 resultado = base;
-                break;
-            case IZQUIERDA:
+            }
+            case IZQUIERDA -> {
                 base = textura.extraertextura(columnaImagen+imagenActual, filaImagen+2, anchoSprite, altoSprite);
                 resultado = new RecorteSprite(base.getuFin(), base.getuInicio(), base.getvInicio(), base.getvFin());
-                break;
-            default:
-                resultado = textura.extraertextura(columnaImagen+imagenActual, filaImagen+0, anchoSprite, altoSprite);
+            }
+            default -> resultado = textura.extraertextura(columnaImagen+imagenActual, filaImagen+0, anchoSprite, altoSprite);
         }
 
         return resultado;

@@ -6,45 +6,41 @@ import javax.swing.JOptionPane;
 public class Imprimir {
 
     //*****************************************************************************//
-    public static void mostrarEnConsolaln(String parametro){
-        StackTraceElement[] l= Thread.currentThread().getStackTrace();
-        if (l.length>2) {
-            String kji=l[2].getClassName();
-            System.out.println(l[2].getMethodName());
-            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
+    
+    private static String imp(StackTraceElement[] llamadasALaClase){
+        String salida;
+        if (llamadasALaClase.length>2) {
+            String nombre_de_clase=llamadasALaClase[2].getClassName();
+            salida=(" ====> |"+nombre_de_clase+"|"+" ====> |"+llamadasALaClase[2].getMethodName());
         }else{
-            System.out.println(parametro);
+            salida="error: llamadasALaClase clase Imprimir";
         }
+        
+        return salida;
+    }
+    public static void mostrarEnConsolaln(String parametro){
+        StackTraceElement[] llamadasALaClase= Thread.currentThread().getStackTrace();
+        String imp = imp(llamadasALaClase);
+        
+        System.out.println(parametro+imp+"|");
     } 
     public static void mostrarEnConsolaln(Float parametro){
-        StackTraceElement[] l= Thread.currentThread().getStackTrace();
-        if (l.length>2) {
-            String kji=l[2].getClassName();
-            System.out.println(l[2].getMethodName());
-            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
-        }else{
-            System.out.println(parametro);
-        }
+        StackTraceElement[] llamadasALaClase= Thread.currentThread().getStackTrace();
+        String imp = imp(llamadasALaClase);
+        
+        System.out.println(parametro+imp+"|");
     } 
     public static void mostrarEnConsolaln(boolean parametro){
-        StackTraceElement[] l= Thread.currentThread().getStackTrace();
-        if (l.length>2) {
-            String kji=l[2].getClassName();
-            System.out.println(l[2].getMethodName());
-            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
-        }else{
-            System.out.println(parametro);
-        }
+        StackTraceElement[] llamadasALaClase= Thread.currentThread().getStackTrace();
+        String imp = imp(llamadasALaClase);
+        
+        System.out.println(parametro+imp+"|");
     } 
     public static void mostrarEnConsolaln(int parametro){
-        StackTraceElement[] l= Thread.currentThread().getStackTrace();
-        if (l.length>2) {
-            String kji=l[2].getClassName();
-            System.out.println(l[2].getMethodName());
-            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
-        }else{
-            System.out.println(parametro);
-        }
+        StackTraceElement[] llamadasALaClase= Thread.currentThread().getStackTrace();
+        String imp = imp(llamadasALaClase);
+        
+        System.out.println(parametro+imp+"|");
     } 
     //*****************************************************************************//
     public static void mostrarEnConsola(String parametro){
@@ -127,4 +123,44 @@ public class Imprimir {
         
         
         
+/*
+
+public static void mostrarEnConsolaln(String parametro){
+        StackTraceElement[] llamadasALaClase= Thread.currentThread().getStackTrace();
+        String imp = imp(llamadasALaClase);
         
+        System.out.println(parametro+imp+"|");
+    } 
+    public static void mostrarEnConsolaln(Float parametro){
+        StackTraceElement[] l= Thread.currentThread().getStackTrace();
+        if (l.length>2) {
+            String kji=l[2].getClassName();
+            System.out.println(l[2].getMethodName());
+            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
+        }else{
+            System.out.println(parametro);
+        }
+    } 
+    public static void mostrarEnConsolaln(boolean parametro){
+        StackTraceElement[] l= Thread.currentThread().getStackTrace();
+        if (l.length>2) {
+            String kji=l[2].getClassName();
+            System.out.println(l[2].getMethodName());
+            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
+        }else{
+            System.out.println(parametro);
+        }
+    } 
+    public static void mostrarEnConsolaln(int parametro){
+        StackTraceElement[] l= Thread.currentThread().getStackTrace();
+        if (l.length>2) {
+            String kji=l[2].getClassName();
+            System.out.println(l[2].getMethodName());
+            System.out.println("|"+kji+"|"+" ====> |"+parametro+"|");
+        }else{
+            System.out.println(parametro);
+        }
+    } 
+
+
+*/

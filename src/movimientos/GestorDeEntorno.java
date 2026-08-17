@@ -1,6 +1,7 @@
 package movimientos;
 
 import enums.ubicacion.UbicacionBorde;
+import imprimir.Imprimir;
 
 public class GestorDeEntorno {
     private final int anchoPanel;
@@ -13,7 +14,7 @@ public class GestorDeEntorno {
         
     }
 
-    public UbicacionBorde detectarBorde(cordenadas posicionEntidad) {
+    public UbicacionBorde detectarBorde(Cordenadas posicionEntidad) {
         
         boolean izq = posicionEntidad.getPosicionX() <= 0;
         boolean der = posicionEntidad.getPosicionX() + posicionEntidad.getAnchoSprite()>= (anchoPanel - MARGEN);

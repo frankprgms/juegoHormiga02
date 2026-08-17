@@ -1,5 +1,7 @@
 package enums;
 
+import java.util.ArrayList;
+
 public class EnumEntidades {
     
     public enum RolesEntidades {
@@ -37,8 +39,11 @@ public class EnumEntidades {
         DERECHA,
         IZQUIERDA,
         ARRIBA,
-        ABAJO
+        ABAJO;
+
     }
+
+    
 }
 
 

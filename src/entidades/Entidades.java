@@ -1,44 +1,70 @@
 
 package entidades;
 
+import consumibles.Comida;
 import prueba2.RecorteSprite;
 import prueba2.Textura;
 
 import enums.EnumEntidades.DireccionEntidades;
 import imprimir.Imprimir;
-import movimientos.cordenadas;
+import java.util.List;
+import movimientos.Cordenadas;
+import movimientos.InterfasDeMovimiento;
 
 public class Entidades {
-    private cordenadas posicionEntidad;
+    private Cordenadas posicionEntidad;
     private int columnaImagen;
     private int filaImagen;
     private float anchoSprite;
     private float altoSprite;
     private Textura textura;
     private RecorteSprite recorteSprite;
+    private ConfiguracionSpriteSheet configuracionSpriteSheet;
     private DireccionEntidades direccionEntidad ;
     private int cantidadimagenes;
     private int imagenActual=0;
-    private ConfiguracionSpriteSheet configuracionSpriteSheet;
+    //----------movimientos-------------
+    protected InterfasDeMovimiento movimientoActual;
+    
+    
     private double tiempoCambioFrame;
-    public Entidades(
-            cordenadas posicionEntidad, int columnaImagen, int filaImagen, float anchoSprite, float altoSprite, 
-            Textura textura,ConfiguracionSpriteSheet configuracionSpriteSheet,
-            DireccionEntidades direccionEntidad,int cantidadimagenes
+    public Entidades(Cordenadas posicionEntidad,Textura textura,ConfiguracionSpriteSheet configuracionSpriteSheet,
+            DireccionEntidades direccionEntidad,InterfasDeMovimiento movimientoActual,int cantidadimagenes
     ) {
 
         this.posicionEntidad = posicionEntidad;
-        this.columnaImagen = columnaImagen;
-        this.filaImagen = filaImagen;
-        this.anchoSprite = anchoSprite;
-        this.altoSprite = altoSprite;
+        this.columnaImagen = posicionEntidad.getColumnaImagen();
+        this.filaImagen =  posicionEntidad.getFilaImagen();
+        this.anchoSprite =  posicionEntidad.getAnchoSprite();
+        this.altoSprite =  posicionEntidad.getAltoSprite();
         this.textura = textura;
         this.direccionEntidad = direccionEntidad;
         this.configuracionSpriteSheet = configuracionSpriteSheet;
         this.cantidadimagenes = cantidadimagenes;
+        this.movimientoActual = movimientoActual;
         
         //recorteSprite=textura.extraertextura(columnaImagen, filaImagen, anchoSprite, altoSprite);
     }
+
+    //------------movimientos------------------------------------//
+    public void setMovimientoActual(InterfasDeMovimiento movimientoActual) {
+        this.movimientoActual = movimientoActual;
+    }
+    
+    private void evaluarCambioDeMovimiento(List<Entidades> Entidades, List<Comida> comidas){
+        for (Entidades Entidad : Entidades) {
+            posicionEntidad.estanColisionando(Entidad.getPosicionEntidad());
+        }
+    }
+    public void mover(List<Entidades> Entidades, List<Comida> comidas) {
+        evaluarCambioDeMovimiento(Entidades, comidas);
+        direccionEntidad = movimientoActual.moverse(posicionEntidad, direccionEntidad);
+        
+    }
+    public InterfasDeMovimiento getMovimientoActual() {
+        return movimientoActual;
+    }
+ 
     public RecorteSprite direcciondo(){
         
         RecorteSprite obtenerRecorte = configuracionSpriteSheet.obtenerRecorte(
@@ -61,11 +87,11 @@ public class Entidades {
         this.tiempoCambioFrame+=1.0;
     }
 
-    public cordenadas getPosicionEntidad() {
+    public Cordenadas getPosicionEntidad() {
         return posicionEntidad;
     }
 
-    public void setPosicionEntidad(cordenadas posicionEntidad) {
+    public void setPosicionEntidad(Cordenadas posicionEntidad) {
         this.posicionEntidad = posicionEntidad;
     }
 
@@ -153,8 +179,6 @@ public class Entidades {
         this.configuracionSpriteSheet = configuracionSpriteSheet;
     }
 
-    
-    
    
 }
 //        float uInicio = recorteSprite.getuInicio();

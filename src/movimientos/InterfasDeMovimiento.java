@@ -6,5 +6,5 @@ import enums.EnumEntidades.*;
 
 public interface InterfasDeMovimiento {
 
-    DireccionEntidades moverse(cordenadas posicionEntidad,DireccionEntidades DireccionEntidades);
+    DireccionEntidades moverse(Cordenadas posicionEntidad,DireccionEntidades DireccionEntidades);
 }

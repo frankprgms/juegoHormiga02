@@ -10,9 +10,9 @@ public class MoverAObjetivo implements InterfasDeMovimiento{
     
     private final Desplazador desplazador = new Desplazador();
     
-    cordenadas posicionObjetivo;
+    Cordenadas posicionObjetivo;
     @Override
-    public DireccionEntidades moverse( cordenadas posicionEntidad, DireccionEntidades DireccionEntidades) {
+    public DireccionEntidades moverse( Cordenadas posicionEntidad, DireccionEntidades DireccionEntidades) {
         int destinoX=(int) posicionObjetivo.getPosicionX();
         int destinoY=(int) posicionObjetivo.getPosicionY();
         
@@ -32,19 +32,19 @@ public class MoverAObjetivo implements InterfasDeMovimiento{
             }
         }
         switch(DireccionEntidades){
-            case ABAJO:desplazador.moverAbajo( posicionEntidad);break;
-            case ARRIBA:desplazador.moverArriba( posicionEntidad);break;
-            case DERECHA:desplazador.moverDerecha( posicionEntidad);break;
-            case IZQUIERDA:desplazador.moverIzquierda( posicionEntidad);break;
+            case ABAJO->desplazador.moverAbajo( posicionEntidad);
+            case ARRIBA->desplazador.moverArriba( posicionEntidad);
+            case DERECHA->desplazador.moverDerecha( posicionEntidad);
+            case IZQUIERDA->desplazador.moverIzquierda( posicionEntidad);
         }
         return DireccionEntidades;
     }
 
-    public cordenadas getObjetivo() {
+    public Cordenadas getObjetivo() {
         return posicionObjetivo;
     }
 
-    public void setObjetivo(cordenadas posicionObjetivo) {
+    public void setObjetivo(Cordenadas posicionObjetivo) {
         this.posicionObjetivo = posicionObjetivo;
     }
     

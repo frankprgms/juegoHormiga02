@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 
 public class MovimientoBuscarComida implements InterfasDeMovimiento{
     DetectorDeColisiones DetectorDeColisiones ;
-    Rectangle comida;
+    Cordenadas comida;
     public MovimientoBuscarComida(DetectorDeColisiones DetectorDeColisiones) {
         
         this.DetectorDeColisiones = DetectorDeColisiones;
@@ -16,27 +16,43 @@ public class MovimientoBuscarComida implements InterfasDeMovimiento{
         
         
     @Override
-    public DireccionEntidades moverse(cordenadas posicionEntidad, DireccionEntidades DireccionEntidades) {
+    public DireccionEntidades moverse(Cordenadas posicionEntidad, DireccionEntidades DireccionEntidades) {
         if (comida!=null) {
-            comida.getX();
-            comida.getY();
+
         }
             
         return null;
         
     }
-    public boolean compararCercania(Rectangle entidad, Rectangle comida,int alcanceDeteccion){
-        if (DetectorDeColisiones.estaCercaAEntidad(entidad, comida, alcanceDeteccion)) {
+    public boolean compararCercania(
+            Cordenadas posicionEntidad, 
+            Cordenadas comparar,
+            int alcanceDeteccion, 
+            DireccionEntidades direccionEntidad
+    ){
+        if (posicionEntidad.EstanCerca(comparar, alcanceDeteccion, direccionEntidad)) {
+            this.comida= comparar;
+            return true;
+        }else{
+            return false;
+        }
+        
+
+    }
+
+    public void setComida(Cordenadas comida) {
+        this.comida = comida;
+    }
+}
+        
+        
+        
+        
+        /*if (DetectorDeColisiones.estaCercaAEntidad(entidad, comida, alcanceDeteccion)) {
             this.comida= comida;
             return true;
         }else{
             this.comida=null;
             return false;
         }
-        
-    }
-
-    public void setComida(Rectangle comida) {
-        this.comida = comida;
-    }
-}
+        */

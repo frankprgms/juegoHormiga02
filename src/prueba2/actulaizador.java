@@ -1,8 +1,10 @@
 package prueba2;
 
+import consumibles.Comida;
 import entidades.Entidades;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import movimientos.MoverAlatorio;
 import static org.lwjgl.BufferUtils.createFloatBuffer;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL33.*;
@@ -16,11 +18,13 @@ public class actulaizador {
     private int frames = 0;
     private double timer;
     ArrayList<Entidades> arraylistEntidades ;
-    public actulaizador(Ventana ventana, Shader shader, Malla malla,ArrayList<Entidades> arraylisEntidades ) {
+    ArrayList<Comida> arraylisComida;
+    public actulaizador(Ventana ventana, Shader shader, Malla malla,ArrayList<Entidades> arraylisEntidades ,ArrayList<Comida> arraylisComida) {
         this.ventana = ventana;
         this.shader = shader;
         this.malla = malla;
         this.arraylistEntidades=arraylisEntidades;
+        this.arraylisComida=arraylisComida;
         
     }
     private void render(int locPosicion, int locUV){
@@ -45,7 +49,7 @@ public class actulaizador {
     private void updater(double currentTime){
         for (Entidades Entidad : arraylistEntidades) {
             Entidad.cambioFrame(currentTime);
-            
+            Entidad.mover(arraylistEntidades,arraylisComida);
         }
     }
     public void bucle() {
